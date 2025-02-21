@@ -5,8 +5,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const PORT = process.env.PORT || 3000;
-
+// POST /bfhl
 app.post("/bfhl", (req, res) => {
     const { data } = req.body;
     if (!data || !Array.isArray(data)) {
@@ -19,7 +18,7 @@ app.post("/bfhl", (req, res) => {
 
     res.json({
         is_success: true,
-        user_id: "Shantanu_22BCS15563",
+        user_id: "Shantanu_Singh",
         email: "sshantanu781@gmail.com",
         roll_number: "22BCS15563",
         numbers,
@@ -32,4 +31,8 @@ app.get("/bfhl", (req, res) => {
     res.status(200).json({ operation_code: 1 });
 });
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.get("/", (req, res) => {
+    res.send("Backend is running. Use /bfhl for API.");
+});
+
+module.exports = app;
